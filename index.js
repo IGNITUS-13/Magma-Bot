@@ -1,8 +1,8 @@
-// Cargar librerías necesarias para el bot de MAGMA STUDIOS (¡Ahora empezamos desde aquí!)
+// Cargar librerías necesarias para el bot de MAGMA STUDIOS
 const { Client, GatewayIntentBits, REST, Routes, SlashCommandBuilder } = require('discord.js');
 const admin = require('firebase-admin');
 
-// 🔑 CONFIGURACIÓN DE FIREBASE CORREGIDA
+// 🔑 CONFIGURACIÓN DE FIREBASE CORREGIDA (Nombres oficiales con guion bajo)
 const serviceAccount = {
   project_id: "bloxd-pvp-tierlist",
   private_key: `-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDt+WFdk5KDpV2b\n1pu7NPPNhgz4JgEKDx+z28drXJVhDCzRECzq0zXUFFZAx1K5+X8tOBNKvQw0goDz\nD6Vrk+kUdu6AHhqqji2LGCe4DOqkNQOjb/Fate5krrdwc3WtBriXh2GDL9bBV/xe\ne11z09/lU4pmTC7AMG9lrne9B1om9cHeZyYyaBzNyJER0TCFSUihjzAoLCgwIPWo\nZyN/pWHzBLvr59/kpHEKyNTzMd6E7JJaQcPlGiGsDEzdVXLV8b90nfuw1zstw4au\nXwyX3+eQvzYpI70wOS2FC9SJmcD24Foq7JNFO2RxwOYeAd363YRvR1ciG11UA/Oo\ncjv5ZD8pAgMBAAECggEAX3UPxdoKxOzh4j+RQ2RnwZLag/W2qALODDcGRL4kG4Qn\nPAtZgS6M4o/v01dBC2GVzp02O94eVbfdouItUDxKHA/i9phcyPp0MV3UnOLtgkXT\nuk0Oivz8bf2Zjq150BiolfvTtSxM4Ex7aqjgoTQllRdQJl27yRMEtExqMnSPCJ35\BSPDyFoCJDwdwdfVfpKPBWuw5ckMfk8HnzQaKs9Ip0XK4Pmt/KbVuAh4L/pJBIZe\n9Fl0RAkyQraWW7wpsiSCORnrgGZUGD9k0FTBt1/B7uOL+/dgHn8xjLyuT2FHNUhb\nCY6BCuI8giCqc0EWPhtGSkcfigFPqx+3CoYCzXKaowKBgQD7HAigyPJhmxURKkXu\nE548nkweT5SsgqMpYLzbcxMza1XnmBaUe+82+dA7e3tOwDlSnKj81i/b6+FGIX4X\njmefFPmepmO0ZdF9d5oXkZQkh1EAJR472AAUw+LSa3NptoMYsKALF+2v5FGUY93A\nWGwibSGG/NKqnfSP/GKJ/ead8wKBgQDym9tteD6OJHJrhKXYnHxuAyXfLdCyVEzI\nLE3FUOTdCoKLPshetilf13c9xjKWCCR5W9n81QcBt2BExuOPH0LDGdzAOuAo7ypu\n/81OnSOsB3avM4t3cTU8LrJq0Pv1sw3aYt5iItyQcedOdLVEWzBmyg6eYzhA7U9z\nJ0MprHtJcwKBgFwfVb7+2YUbaugoNQ15nwSoIk7AbU+4gXlNpxtvJS0pBJP5RNdm\nfEUT8uPPklY6yQzYslpHjblF2RhscyDbOoKvJECi1FM7Q1afSSW6X7ni9sFx3Jyh\nyq3Ti2QczXOL5J5rNdu8BJQR1Cf3V0QYbFtY5ALsv7CeUDl+ovvy7OcnAoGAXHYb\n9aebJ68qUGHYlypkncTjXSBn5l8MeEmyRh4jaz7DK/B8iuQf9p/2mPt9cgKebAYe\nmSZTKktKDExEk9pVJmgn4rdNkSw9Xtps06Y93yVlDTa204m4wTwG0YDeVfCsuetu\nV7ZzmzVd81+1adzbIIGneqPT36LR4dA3350Vy5MCgYEAs9tg60cuORaldDB5kvcB\nXFzoyWYoIWCbpEDgBrhJJoI3H+OZV1CQ79Kbant2LRv4OwrspFIycH0bLmUUvnG6\nLc3QNT+F4PTB+HTXyFhEkuikPKG42MaWJE07mIQahoQKQWEWtui3VRfg6OH6tPr5\nr1cnTUmLN9zDHLU85ZhmfXA=\n-----END PRIVATE KEY-----\n`.replace(/\\n/g, '\n'),
@@ -124,7 +124,7 @@ client.on('interactionCreate', async interaction => {
   }
 });
 
-// 🌐 TRUCO PARA MANTENER VIVO EL BOT EN RENDER (¡Ahora lo pusimos al final de todo!)
+// 🌐 TRUCO PARA MANTENER VIVO EL BOT EN RENDER (Movido al final del todo)
 const http = require('http');
 http.createServer((req, res) => {
   res.write("Magma-Bot Is Alive!");
