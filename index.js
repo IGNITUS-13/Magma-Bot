@@ -1,3 +1,9 @@
+// 🌐 TRUCO PARA MANTENER VIVO EL BOT EN RENDER (Evita el error de puertos)
+const http = require('http');
+http.createServer((req, res) => {
+  res.write("Magma-Bot Is Alive!");
+  res.end();
+}).listen(process.env.PORT || 3000);
 // Cargar librerías necesarias para el bot de MAGMA STUDIOS
 const { Client, GatewayIntentBits, REST, Routes, SlashCommandBuilder } = require('discord.js');
 const admin = require('firebase-admin');
