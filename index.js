@@ -1,7 +1,7 @@
 // Cargar librerías necesarias para el bot de MAGMA STUDIOS
 const { Client, GatewayIntentBits, REST, Routes, SlashCommandBuilder } = require('discord.js');
 const admin = require('firebase-admin');
-const http = require('http'); // Movido arriba solo la importación
+const http = require('http');
 
 // 🔑 CONFIGURACIÓN DE FIREBASE CORREGIDA
 const serviceAccount = {
@@ -51,7 +51,7 @@ const commands = [
     .addStringOption(option => option.setName('parkour').setDescription('Tier for Parkour'))
 ].map(command => command.toJSON());
 
-// ⚡ REGISTRAR COMANDOS E INICIAR PUERTO FALSO AL ENCENDER
+// ⚡ EVENTO READY
 client.once('ready', async () => {
   console.log(`🤖 ${client.user.tag} Is online and ready to hunt bots!`);
   
@@ -63,18 +63,9 @@ client.once('ready', async () => {
   } catch (error) {
     console.error(error);
   }
-
-  // 🌐 EL TRUCO DE RENDER ENCIENDE AQUÍ (Solo después de que el bot esté 100% online)
-  console.log('🌐 Starting dummy HTTP server for Render...');
-  http.createServer((req, res) => {
-    res.write("Magma-Bot Is Alive!");
-    res.end();
-  }).listen(process.env.PORT || 3000, () => {
-    console.log('✅ HTTP Server listening smoothly!');
-  });
 });
 
-// 🎮 LOGICA DEL COMANDO /tierupdate CON ASIGNACIÓN DE ROLES
+// 🎮 LOGICA DEL COMANDO /tierupdate
 client.on('interactionCreate', async interaction => {
   if (!interaction.isChatInputCommand()) return;
 
@@ -134,4 +125,16 @@ client.on('interactionCreate', async interaction => {
   }
 });
 
+// 🌐 INICIAR AMBOS SERVICIOS EN PARALELO (Solución definitiva para Render)
+function startServer() {
+  http.createServer((req, res) => {
+    res.write("Magma-Bot Is Alive!");
+    res.end();
+  }).listen(process.env.PORT || 3000, () => {
+    console.log('✅ Render Port Scanner satisfied successfully!');
+  });
+}
+
+// Arrancar el truco web y el bot al mismo milisegundo
+startServer();
 client.login(process.env.DISCORD_TOKEN);
