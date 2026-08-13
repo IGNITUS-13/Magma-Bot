@@ -1,5 +1,6 @@
 {
   "name": "magma-bot",
+  "private": true,
   "version": "1.0.0",
   "description": "Discord Bot for Magma Studios Leaderboard",
   "main": "index.js",
