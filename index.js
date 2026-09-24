@@ -14,7 +14,7 @@ if (!firebaseCredentialsPath) {
 }
 
 if (!fs.existsSync(firebaseCredentialsPath)) {
-  throw new Error(\`No existe el archivo de credenciales de Firebase: \${firebaseCredentialsPath}\`);
+  throw new Error(`No existe el archivo de credenciales de Firebase: ${firebaseCredentialsPath}`);
 }
 
 const serviceAccount = JSON.parse(fs.readFileSync(firebaseCredentialsPath, 'utf8'));
@@ -79,6 +79,8 @@ client.on('interactionCreate', async interaction => {
   if (!interaction.isChatInputCommand()) return;
 
   if (interaction.commandName === 'tierupdate') {
+    await interaction.deferReply();
+
     const user = interaction.options.getUser('target');
     const points = interaction.options.getInteger('points');
     const region = interaction.options.getString('region');
@@ -122,14 +124,13 @@ client.on('interactionCreate', async interaction => {
         }
       }
 
-      await interaction.reply({
-        content: `👑 **${user.username}** ha sido actualizado correctamente en la base de datos de Firebase! En unos segundos se verá reflejado en la web.${rolesAsignadosInfo}`,
-        ephemeral: false
+      await interaction.editReply({
+        content: `👑 **${user.username}** ha sido actualizado correctamente en la base de datos de Firebase! En unos segundos se verá reflejado en la web.${rolesAsignadosInfo}`
       });
 
     } catch (error) {
       console.error(error);
-      await interaction.reply({ content: '❌ Error de base de datos o de permisos al actualizar al jugador.', ephemeral: true });
+      await interaction.editReply({ content: '❌ Error de base de datos o de permisos al actualizar al jugador.' });
     }
   }
 });
