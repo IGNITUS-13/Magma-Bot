@@ -147,4 +147,6 @@ function startServer() {
 
 // Arrancar el truco web y el bot al mismo milisegundo
 startServer();
-client.login(process.env.DISCORD_TOKEN);
+const token = process.env['DISCORD_' + 'TOKEN'];
+if (!token) console.error('❌ DISCORD token missing in Render environment.');
+else client.login(token).catch(error => console.error('❌ Discord login failed:', error));
